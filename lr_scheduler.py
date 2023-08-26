@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 17 18:22:43 2022
-
-@author: weiwei
-@function: swin transformer - lr_scheduler
-"""
 
 import torch
 from timm.scheduler.cosine_lr import CosineLRScheduler
