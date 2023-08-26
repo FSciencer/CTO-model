@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar 19 11:06:03 2023
-
-@author: weiwei
-@function: 3D patch ResNet 做冠脉分割
-           3D patch ResNet 做CTO特征提取
-"""
 
 import os
 import argparse
@@ -28,7 +19,7 @@ def parse_option():
     parser.add_argument('--logger_dir', dest='logger_dir', default='./logger', help='print information in console')
 
     # image info
-    parser.add_argument('--img_size', dest='img_size', type=int,  default=512, help='image whole size, h=w')
+    parser.add_argument('--img_size', dest='img_size', type=int,  default=64, help='image size, h=w')
     parser.add_argument('--img_vmax', dest='img_vmax', type=int, default=255, help='max value in image')
     parser.add_argument('--img_vmin', dest='img_vmin', type=int, default=0,  help='max value in image')
 
