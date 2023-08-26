@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 21 09:53:18 2022
-
-@author: weiwei
-@function: 功能函数集合
-"""
 
 import os
 import torch
