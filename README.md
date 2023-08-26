@@ -7,7 +7,6 @@ To automatically predict the 30-min guidewire (guidewire) crossing and percutane
 <div align="center">    
 <img src="https://github.com/FSciencer/CTO-model/assets/143240318/a77c5ffa-1802-4dff-bbcf-38ac3f70601d.png" height="66%" width="66%" />
 </div>
-![flow_chart](https://github.com/FSciencer/CTO-model/assets/143240318/a77c5ffa-1802-4dff-bbcf-38ac3f70601d)
 
 # Requirements
 ```python=3.7.1 torch=1.7.0```
