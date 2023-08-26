@@ -1,12 +1,5 @@
-# --------------------------------------------------------
-# Swin Transformer
-# Copyright (c) 2021 Microsoft
-# Licensed under The MIT License [see LICENSE for details]
-# --------------------------------------------------------
 
 from torch import optim as optim
-import torch.nn as nn
-import torch
 
 
 def build_optimizer_setting(model):
