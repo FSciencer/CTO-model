@@ -1,21 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 7 19:48:48 2022
-
-@author: weiwei
-@function: 预测过程的功能函数集合
-"""
 
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
+import matplotlib.pylab as plt
 
 
 def dice_similarity_coefficient(prediction, target):
-    # prediction = np.reshape(prediction, [-1, 1])
-    # target = np.reshape(target, [-1, 1])
     prediction = prediction.flatten()
     target = target.flatten()
     smooth = 1e-5
