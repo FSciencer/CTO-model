@@ -1,4 +1,4 @@
-# Deep Learning Prediction for Percutaneous Recanalization of Chronic Total Occlusion Using Coronary CT Angiography![image](https://github.com/FSciencer/CTO-model/assets/143240318/53cf26f4-ecb7-466c-94a2-c431fda6173c)
+# Deep Learning Prediction for Percutaneous Recanalization of Chronic Total Occlusion Using Coronary CT Angiography
 
 
 # Flowchart of the model
