@@ -42,10 +42,8 @@ class Patch_UCTNet(object):
         if config.AMP_OPT_LEVEL != "O0":
             model, optimizer = amp.initialize(model, optimizer, opt_level='O1')  # opt_level: ('O0', 'O1', 'O2')
 
-        # loss function
         ce_loss = nn.CrossEntropyLoss()
 
-        # 寻找最新的检查点
         if config.TRAIN.AUTO_RESUME:
             resume_file = auto_resume_helper(config.OUTPUT)
             if resume_file:
@@ -58,14 +56,13 @@ class Patch_UCTNet(object):
             else:
                 logger.info(f'no checkpoint found in {config.OUTPUT}, ignoring auto resume')
 
-        # 从最新的检查点自动恢复模型参数
         if config.MODEL.RESUME:
             load_checkpoint(config, model, optimizer, logger)
             if config.EVAL_MODE:
                 return
 
         logger.info("Start training")
-        for epoch in range(config.TRAIN.START_EPOCH, config.TRAIN.EPOCHS):  # 或者换成：for epoch in (iterator=tqdm(range(config.TRAIN.EPOCHS), ncols=10)):
+        for epoch in range(config.TRAIN.START_EPOCH, config.TRAIN.EPOCHS):
             self.data_loader_train.sampler.set_epoch(epoch)
 
             self.train_one_epoch(config, model, ce_loss, self.data_loader_train, optimizer, epoch, logger)
