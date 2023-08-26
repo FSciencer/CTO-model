@@ -182,7 +182,6 @@ def update_config(config, args):
     if args.throughput:
         config.THROUGHPUT_MODE = True
 
-    # 自己设置的参数
     if args.epochs:
         config.TRAIN.EPOCHS = args.epochs
     if args.batch_size_val:
