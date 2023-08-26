@@ -11,7 +11,7 @@ def parse_option():
 
     # -------------------------------------
     # Data setting
-    parser.add_argument('--png_path', dest='png_path', default='/dataset/CTO/', help='.dicom file directory')
+    parser.add_argument('--data_path', dest='data_path', default='/dataset/CTO/', help='dataset directory')
     parser.add_argument('--image_path', dest='image_path', default='cta_resampling_npy', help='CT image folder name')
     parser.add_argument('--label_path', dest='label_path', default='coronary_resampling_npy', help='coronary label folder name')
 
