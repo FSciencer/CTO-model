@@ -5,7 +5,7 @@ To automatically predict the 30-min guidewire (guidewire) crossing and percutane
 
 # Flowchart of the model
 <div align="center">    
-<img src="https://github.com/FSciencer/CTO-model/assets/143240318/a77c5ffa-1802-4dff-bbcf-38ac3f70601d.png" height="66%" width="66%" />
+<img src="https://user-images.githubusercontent.com/143240318/263460810-a77c5ffa-1802-4dff-bbcf-38ac3f70601d.png" height="90%" width="90%" />
 </div>
 
 # Requirements
