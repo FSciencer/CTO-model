@@ -46,10 +46,8 @@ class Patch_UCTNet(object):
         if config.AMP_OPT_LEVEL != "O0":
             model, optimizer = amp.initialize(model, optimizer, opt_level='O1')  # opt_level: ('O0', 'O1', 'O2')
 
-        # loss function
         focal_loss = FocalLoss(gamma=2)
 
-        # 寻找最新的检查点
         if config.TRAIN.AUTO_RESUME:
             resume_file = auto_resume_helper(config.OUTPUT)
             if resume_file:
@@ -62,14 +60,13 @@ class Patch_UCTNet(object):
             else:
                 logger.info(f'no checkpoint found in {config.OUTPUT}, ignoring auto resume')
 
-        # 从最新的检查点自动恢复模型参数
         if config.MODEL.RESUME:
             load_checkpoint(config, model, optimizer, logger)
             if config.EVAL_MODE:
                 return
 
         logger.info("Start training")
-        for epoch in range(config.TRAIN.START_EPOCH, config.TRAIN.EPOCHS):  # 或者换成：for epoch in (iterator=tqdm(range(config.TRAIN.EPOCHS), ncols=10)):
+        for epoch in range(config.TRAIN.START_EPOCH, config.TRAIN.EPOCHS):
             self.data_loader_train.sampler.set_epoch(epoch)
 
             self.train_one_epoch(config, model, focal_loss, self.data_loader_train, optimizer, epoch, logger)
@@ -125,7 +122,7 @@ class Patch_UCTNet(object):
                     f'loss {loss_meter.val:.3f} ({loss_meter.avg:.3f})\t'
                     f'grad_norm {norm_meter.val:.3f} ({norm_meter.avg:.3f})\t'
                     f'mem {memory_used:.0f}MB')
-            if idx % (config.PRINT_FREQ * 0.2) == 0:  # 保存训练图像
+            if idx % (config.PRINT_FREQ * 0.2) == 0:
                 samples_arr = samples.data.cpu().numpy()[config.DATA.BATCH_SIZE-1, 0, :, :]
                 targets_arr = targets.data.cpu().numpy()[config.DATA.BATCH_SIZE-1, 0, :, :]
                 prediction = outputs.data.cpu().numpy()[config.DATA.BATCH_SIZE-1, 0, :, :]
@@ -142,8 +139,8 @@ class Patch_UCTNet(object):
             samples = samples.to(torch.float32)
 
             outputs = model(samples)
-            logits = 1 / (1 + np.exp(-outputs.data.cpu().numpy()))  # sigmoid
-            predicted_mask.append(logits)  # 把每个 batch 的测试结果放置在同一 list 内, 最后一个 batch 数量可能不足
+            logits = 1 / (1 + np.exp(-outputs.data.cpu().numpy()))
+            predicted_mask.append(logits)
             target.append(targets)
 
         predicted_mask = np.concatenate(predicted_mask, axis=0)
