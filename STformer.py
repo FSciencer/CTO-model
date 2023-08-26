@@ -99,7 +99,7 @@ class WindowAttention(nn.Module):
         relative_position_index = relative_coords.sum(-1)  # Wh*Ww, Wh*Ww
         self.register_buffer("relative_position_index", relative_position_index)
 
-        self.qkv = nn.Linear(dim, dim * 3, bias=qkv_bias)  # 单通道输入可以不需要
+        self.qkv = nn.Linear(dim, dim * 3, bias=qkv_bias)
         self.attn_drop = nn.Dropout(attn_drop)
         self.proj = nn.Linear(dim, dim)
         self.proj_drop = nn.Dropout(proj_drop)
@@ -484,65 +484,8 @@ class PatchUnEmbed(nn.Module):
         return flops
 
 
-class DoubleConv(nn.Module):
-    """(convolution => [BN] => ReLU) * 2"""
-
-    def __init__(self, in_channels, out_channels, mid_channels=None):
-        super().__init__()
-        if not mid_channels:
-            mid_channels = out_channels
-        self.double_conv = nn.Sequential(
-            nn.Conv2d(in_channels, mid_channels, kernel_size=3, padding=1, bias=False),
-            nn.BatchNorm2d(mid_channels),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(mid_channels, out_channels, kernel_size=3, padding=1, bias=False),
-            nn.BatchNorm2d(out_channels),
-            nn.ReLU(inplace=True)
-        )
-
-    def forward(self, x):
-        return self.double_conv(x)
-
-
-class Down(nn.Module):
-    """Downscaling with maxpool then double conv"""
-
-    def __init__(self, in_channels, out_channels):
-        super().__init__()
-        self.maxpool_conv = nn.Sequential(
-            nn.MaxPool2d(2),
-            DoubleConv(in_channels, out_channels)
-        )
-
-    def forward(self, x):
-        return self.maxpool_conv(x)
-
-
-class Up(nn.Module):
-    """Upscaling then double conv"""
-
-    def __init__(self, in_channels, out_channels, bilinear=False):
-        super().__init__()
-
-        # if bilinear, use the normal convolutions to reduce the number of channels
-        if bilinear:
-            self.up = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-            self.conv = DoubleConv(in_channels, out_channels, in_channels // 2)
-        else:
-            self.up = nn.ConvTranspose2d(in_channels, in_channels // 2, kernel_size=2, stride=2)
-            self.conv = DoubleConv(in_channels // 2, out_channels)  # out_channels = in_channels // 2
-
-    def forward(self, x):
-        x = self.up(x)
-        x = self.conv(x)
-        return x
-
-
 class SwinTransformer(nn.Module):
     r""" Swin Transformer
-        A PyTorch impl of : `Swin Transformer: Hierarchical Vision Transformer using Shifted Windows`  -
-          https://arxiv.org/pdf/2103.14030
-
     Args:
         img_size (int | tuple(int)): Input image size. Default 224
         patch_size (int | tuple(int)): Patch size. Default: 4
@@ -639,19 +582,16 @@ class SwinTransformer(nn.Module):
         return {'relative_position_bias_table'}
 
     def forward_features(self, x):
-        # x: [B, 1, 256, 256]
         x = self.patch_embed(x)
-        # x: [B, 64*64, 96]
         if self.ape:
             x = x + self.absolute_pos_embed
         x = self.pos_drop(x)
 
         for layer in self.layers:
             x = layer(x)
-        # x: [B, 64, 384]
 
-        x = self.norm(x)  # B L C
-        x = self.avgpool(x.transpose(1, 2))  # B C 1
+        x = self.norm(x)
+        x = self.avgpool(x.transpose(1, 2))
         x = torch.flatten(x, 1)
         return x
 
