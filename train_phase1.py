@@ -6,14 +6,14 @@ from model import Patch_UCTNet
 
 
 def parse_option():
-    parser = argparse.ArgumentParser(description='training and evaluation script', add_help=False)
+    parser = argparse.ArgumentParser(description='training segmentation script', add_help=False)
     parser.add_argument("--opts", help="Modify config options by adding 'KEY VALUE' pairs. ", default=None, nargs='+')
 
     # -------------------------------------
     # Data setting
     parser.add_argument('--data_path', dest='data_path', default='/dataset/CTO/', help='dataset directory')
-    parser.add_argument('--image_path', dest='image_path', default='cta_resampling_npy', help='CT image folder name')
-    parser.add_argument('--label_path', dest='label_path', default='coronary_resampling_npy', help='coronary label folder name')
+    parser.add_argument('--image_path', dest='image_path', default='cta_resampling', help='CT image folder name')
+    parser.add_argument('--label_path', dest='label_path', default='coronary_resampling', help='coronary label folder name')
 
     # Directory saving setting
     parser.add_argument('--logger_dir', dest='logger_dir', default='./logger', help='print information in console')
