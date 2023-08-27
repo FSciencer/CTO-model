@@ -16,4 +16,10 @@
 </div>
 
 # Requirements
-```python=3.7.1 torch=1.7.0```
+```
+python=3.7.1 
+torch=1.7.0
+connected-components-3d=3.12.3
+empatches=0.2.3
+timm=0.9.5
+```
