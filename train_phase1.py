@@ -25,7 +25,7 @@ def parse_option():
 
     # easy config modification
     parser.add_argument('--num_classes', type=int, default=1, help="class num of network output")
-    parser.add_argument('--epochs', type=int, default=100, help="total training epochs")
+    parser.add_argument('--epochs', type=int, default=60, help="total training epochs")
     parser.add_argument('--batch-size', type=int, default=16, help="batch size for single GPU")
     parser.add_argument('--batch-size_val', type=int, default=32, help="batch size of validation for single GPU")
     parser.add_argument('--data-path', type=str, help='path to dataset')
