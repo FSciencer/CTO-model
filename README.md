@@ -12,7 +12,7 @@
 
 # Comparison with other scores
 <div align="center">    
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/143240318/263514292-10ebd451-30bf-4045-be71-42cda69ba930.png" height="90%" width="90%" />
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/143240318/263514292-10ebd451-30bf-4045-be71-42cda69ba930.png" height="80%" width="80%" />
 </div>
 
 # Requirements
