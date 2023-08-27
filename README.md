@@ -9,6 +9,7 @@
 <div align="center">    
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/143240318/263461681-5574e1a0-ce98-4b2f-990b-c01460691334.png" height="90%" width="90%" />
 </div>
+![flow_chart](https://github.com/FSciencer/CTO-model/assets/143240318/c28efb4a-58ab-43b7-8699-91014f4fb93b)
 
 # Comparison with other scores 
 
