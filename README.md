@@ -9,7 +9,11 @@
 <div align="center">    
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/143240318/263509656-c28efb4a-58ab-43b7-8699-91014f4fb93b.png" height="90%" width="90%" />
 </div>
-![Comparison](https://github.com/FSciencer/CTO-model/assets/143240318/10ebd451-30bf-4045-be71-42cda69ba930)
+
+# Comparison with other scores
+<div align="center">    
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/143240318/263514292-10ebd451-30bf-4045-be71-42cda69ba930.png" height="90%" width="90%" />
+</div>
 
 # Requirements
 ```python=3.7.1 torch=1.7.0```
