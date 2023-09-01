@@ -12,8 +12,8 @@ def parse_option():
     # -------------------------------------
     # Data setting
     parser.add_argument('--data_path', dest='data_path', default='/dataset/CTO/', help='dataset directory')
-    parser.add_argument('--image_path', dest='image_path', default='cta_resampling', help='CT image folder name')
-    parser.add_argument('--mask_path', dest='mask_path', default='coronary_mask', help='predicted coronary folder name')
+    parser.add_argument('--image_path', dest='image_path', default='cta', help='CT image folder name')
+    parser.add_argument('--mask_path', dest='mask_path', default='lesion_mask', help='predicted coronary folder name')
     parser.add_argument('--label_path', dest='label_path', default='PCI_class', help='class of PCI result folder name')
 
     # Directory saving setting
