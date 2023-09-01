@@ -12,8 +12,8 @@ def parse_option():
     # -------------------------------------
     # Data setting
     parser.add_argument('--data_path', dest='data_path', default='/dataset/CTO/', help='dataset directory')
-    parser.add_argument('--image_path', dest='image_path', default='cta_resampling', help='CT image folder name')
-    parser.add_argument('--label_path', dest='label_path', default='coronary_resampling', help='coronary label folder name')
+    parser.add_argument('--image_path', dest='image_path', default='cta_patch', help='CT image folder name')
+    parser.add_argument('--label_path', dest='label_path', default='label_patch', help='coronary label folder name')
 
     # Directory saving setting
     parser.add_argument('--logger_dir', dest='logger_dir', default='./logger', help='print information in console')
